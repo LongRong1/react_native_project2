@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
   },
   illustration: {
-    width: "100%",
+    width: 300,
     height: 310,
     resizeMode: "contain",
   },
@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     borderRadius: 12,
     padding: 15,
+    paddingLeft: 15,
     marginBottom: 16,
     borderWidth: 1,
     borderColor: COLORS.border,
