@@ -38,7 +38,13 @@ export default function SignUpScreen() {
     } catch (err) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
+      if (err.errors?.[0]?.code === 'form_identifier_exists') {
+        setError('Email đã được sử dụng')
+      } else if (err.errors?.[0]?.code === 'form_password_length_too_short') {
+        setError('Mật khẩu phải có ít nhất 8 ký tự')
+      } else {
+        setError('Đã xảy ra lỗi. Vui lòng thử lại.')
+      }
     }
   }
 
