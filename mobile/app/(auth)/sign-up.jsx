@@ -71,14 +71,17 @@ export default function SignUpScreen() {
     } catch (err) {
       // See https://clerk.com/docs/custom-flows/error-handling
       // for more info on error handling
-      console.error(JSON.stringify(err, null, 2))
+      if (err.errors?.[0]?.code === 'client_state_invalid') {
+        setError('Mã xác minh không đúng')
+      }
     }
   }
 
   if (pendingVerification) {
+
     return (
       <View style={styles.verificationContainer}>
-        <Text style={styles.verificationText}>Verify your email</Text>
+        <Text style={styles.verificationText}>Xác thực email của bạn</Text>
 
         {error ? (
           <View style={styles.errorBox}>
@@ -97,6 +100,8 @@ export default function SignUpScreen() {
           placeholder="Nhập mã xác minh"
           placeholderTextColor="#9A8478"
           onChangeText={(code) => setCode(code)}
+          keyboardType='number-pad'
+          maxLength={6}
         />
         <TouchableOpacity onPress={onVerifyPress} style={styles.button}>
           <Text style={styles.buttonText}>Xác minh</Text>

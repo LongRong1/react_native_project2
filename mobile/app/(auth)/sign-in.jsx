@@ -47,9 +47,6 @@ export default function Page() {
       }else{
         setError('Đã xảy ra lỗi. Vui lòng thử lại.')
       }
-
-      console.log(JSON.stringify(err, null, 2))
-
     }
   }
 
@@ -61,7 +58,7 @@ export default function Page() {
       extraScrollHeight={30}
     >
       <View style={styles.container}>
-        <Image source={require('@/assets/images/revenue-i4.png')} style={styles.illustration} />
+        <Image source={require('@/assets/images/i4convert-removebg-preview.png')} style={styles.illustration} />
         <Text style={styles.title}>Xin Chào Bạn</Text>
         {/* <Text style={styles.content}>Đăng nhập để tiếp tục</Text> */}
 
