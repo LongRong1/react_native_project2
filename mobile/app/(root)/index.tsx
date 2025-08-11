@@ -1,6 +1,6 @@
 import { SignedIn, SignedOut, useUser } from '@clerk/clerk-expo'
 import { Link, useRouter } from 'expo-router'
-import { FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
+import { Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-native'
 import { SignOutButton } from '@/components/SignOutButton'
 import { useTransactions } from '@/hooks/useTransactions'
 import { useEffect } from 'react'
@@ -20,9 +20,14 @@ export default function Page() {
 
   if(isLoading) return <PageLoader />
 
-  const handleDelete = () =>{
-    
-  }
+  const handleDelete = (id: string | number) => {
+    Alert.alert("Delete transactions","Are you sure want to delete?",
+      [
+        {text:"Cancel", style:"cancel"},
+        {text:"Delete",style:"destructive",onPress:()=>deleteTransaction(id)},
+      ]
+    );
+  };
 
   return (
     <View style={styles.container}>
