@@ -9,6 +9,7 @@ import { styles } from '@/assets/styles/home.styles.js'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import {BalanceCard} from '@/components/BalanceCard'
 import TransactionsItem from '@/components/TransactionsItem.jsx'
+import NoTransactionsFound from '@/components/NoTransactionsFound'
 
 export default function Page() {
   const { user } = useUser();
@@ -67,6 +68,7 @@ export default function Page() {
       renderItem={({item})=> (
         <TransactionsItem item={item} onDelete={handleDelete} />
       )}
+      ListEmptyComponent={<NoTransactionsFound/>}
       ></FlatList>
       
     </View>
